@@ -7,7 +7,7 @@ use restauracja;
 go
 
 create table restauracje (
-	restauracjaNr int not null primary key,
+	restauracjaID int not null primary key,
 	nazwa varchar(25) not null,
 	ulica varchar(25) not null,
 	miasto varchar(25) not null,
@@ -16,7 +16,7 @@ create table restauracje (
 go
 
 create table stanowiska (
-	stanowiskoNr int not null primary key,
+	stanowiskoID int not null primary key,
 	nazwa varchar(25) not null,
 	placa_min money not null,
 	placa_max money,
@@ -24,51 +24,51 @@ create table stanowiska (
 go
 
 create table personel (
-	personelNr int not null primary key,
+	personelID int not null primary key,
 	imie varchar(25) not null,
 	nazwisko varchar(25) not null,
-	stanowiskoNr int not null,
+	stanowiskoID int not null,
 	plec char(1) not null constraint czytelnicy_plec_CH check(plec='K' or plec='M'),
 	dataUr smalldatetime not null,
 	pensja money not null,
-	restauracjaNr int not null,
-	constraint FKPersonelRestauracja foreign key (restauracjaNr) references restauracje (restauracjaNr),
-	constraint FKPersonelStanowisko foreign key (stanowiskoNr) references stanowiska (stanowiskoNr)
+	restauracjaID int not null,
+	constraint FKPersonelRestauracja foreign key (restauracjaID) references restauracje (restauracjaID),
+	constraint FKPersonelStanowisko foreign key (stanowiskoID) references stanowiska (stanowiskoID)
 );
 go
 
 create table menu (
-	menuNr int not null primary key,
-	restauracjaNr int not null,
-	constraint FKMenuRestauracja foreign key (restauracjaNr) references restauracje (restauracjaNr),
+	menuID int not null primary key,
+	restauracjaID int not null,
+	constraint FKMenuRestauracja foreign key (restauracjaID) references restauracje (restauracjaID),
 );
 go
 
 create table dania (
-	danieNr int not null primary key,
+	danieID int not null primary key,
 	nazwa varchar(25) not null,
 	cena money not null
 );
 go
 
 create table skladniki (
-	skladnikNr int not null primary key,
+	skladnikID int not null primary key,
 	nazwa varchar(25) not null,
 );
 go
 
 create table menudania (
-	menuNr int not null,
-	danieNr int not null,
-	constraint FKMenuDania2 foreign key (menuNr) references menu (menuNr),
-	constraint FKMenuDania3 foreign key (danieNr) references dania (danieNr)
+	menuID int not null,
+	danieID int not null,
+	constraint FKMenuDania2 foreign key (menuID) references menu (menuID),
+	constraint FKMenuDania3 foreign key (danieID) references dania (danieID)
 );
 go
 
 create table daniaskladniki (
-	danieNr int not null,
-	skladnikNr int not null,
-	constraint FKDaniaSkladniki1 foreign key (danieNr) references dania (danieNr),
-	constraint FKDaniaSkladniki2 foreign key (skladnikNr) references skladniki (skladnikNr)
+	danieID int not null,
+	skladnikID int not null,
+	constraint FKDaniaSkladniki1 foreign key (danieID) references dania (danieID),
+	constraint FKDaniaSkladniki2 foreign key (skladnikID) references skladniki (skladnikID)
 );
 go

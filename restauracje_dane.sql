@@ -16,29 +16,40 @@ go
 insert into restauracja..stanowiska values(1, 'kierownik',   4000, 6000);
 insert into restauracja..stanowiska values(2, 'szef kuchni', 3000, 4000);
 insert into restauracja..stanowiska values(3, 'kucharz',     2000, 3000);
-insert into restauracja..stanowiska values(4, 'kelner',      1500, 2500);
+insert into restauracja..stanowiska values(4, 'kelner',      1000, 2500);
 --select * from restauracja..stanowiska;
 go
 
 -- Personel, każdy ma przypisane Stanowisko oraz Restauracje
 -- personelID, imie, nazwisko, stanowiskoID, plec, dataUr, pensja, restauracjaID
-insert into restauracja.dbo.personel values ( 1, 'Jan',        'Żbik',       1, 'M', '1951-05-06', 1700, 1);
-insert into restauracja.dbo.personel values ( 2, 'Maria',      'Hojna',      2, 'K', '1970-02-19',  900, 1);
-insert into restauracja.dbo.personel values ( 3, 'Sabina',     'Bober',      3, 'K', '1940-06-03', 2400, 1);
-insert into restauracja.dbo.personel values ( 4, 'Daniel',     'Frankowski', 3, 'M', '1958-03-24', 1800, 1);
-insert into restauracja.dbo.personel values ( 5, 'Małgorzata', 'Kowalska',   4, 'K', '1972-03-15', 1000, 1);
-insert into restauracja.dbo.personel values ( 6, 'Anna',       'Biały',      4, 'K', '1960-11-10', 1200, 1);
-insert into restauracja.dbo.personel values ( 7, 'Katarzyna',  'Michalska',  4, 'K', '1960-11-17', 2500, 1);
-insert into restauracja.dbo.personel values ( 8, 'Dawid',      'Piotrowski', 1, 'M', '1975-03-22', 1100, 2);
-insert into restauracja.dbo.personel values ( 9, 'Małgorzata', 'Plichta',    2, 'K', '1971-10-03', 1200, 2);
-insert into restauracja.dbo.personel values (10, 'Karolina',   'Mucha',      3, 'K', '1953-03-03', 2200, 2);
-insert into restauracja.dbo.personel values (11, 'Piotr',      'Cybulski',   3, 'M', '1974-12-06', 1300, 2);
-insert into restauracja.dbo.personel values (12, 'Paweł',      'Nowak',      4, 'M', '1962-02-02', 1500, 2);
-insert into restauracja.dbo.personel values (13, 'Paweł',      'Kowalski',   4, 'M', '1969-05-05', 1000, 2);
-insert into restauracja.dbo.personel values (14, 'Monika',     'Munk',       1, 'K', '1977-07-26', 1100, 3);
-insert into restauracja.dbo.personel values (15, 'Jan',        'Wiśniewski', 2, 'M', '1945-10-01', 3000, 3);
-insert into restauracja.dbo.personel values (16, 'Julia',      'Lisicka',    3, 'K', '1965-07-13',  900, 3);
-insert into restauracja.dbo.personel values (17, 'Michał',     'Brzęczyk',   4, 'M', '1959-03-15', 1000, 3);
+insert into restauracja..personel values ( 1, 'Jan',        'Żbik',       1, 'M', '1951-05-06', 2800, 1);
+insert into restauracja..personel values ( 2, 'Maria',      'Hojna',      2, 'K', '1970-02-19', 2200, 1);
+insert into restauracja..personel values ( 3, 'Sabina',     'Bober',      3, 'K', '1940-06-03', 1800, 1);
+insert into restauracja..personel values ( 4, 'Daniel',     'Frankowski', 3, 'M', '1958-03-24', 1750, 1);
+insert into restauracja..personel values ( 5, 'Krzysztof',  'Frankowski', 3, 'M', '1958-03-24', 1750, 1);
+insert into restauracja..personel values ( 6, 'Małgorzata', 'Kowalska',   4, 'K', '1972-03-15', 1300, 1);
+insert into restauracja..personel values ( 7, 'Anna',       'Biały',      4, 'K', '1960-11-10', 1200, 1);
+insert into restauracja..personel values ( 8, 'Katarzyna',  'Michalska',  4, 'K', '1960-11-17', 1500, 1);
+insert into restauracja..personel values ( 9, 'Dawid',      'Piotrowski', 1, 'M', '1975-03-22', 2000, 2);
+insert into restauracja..personel values (10, 'Karol',      'Mucha',      2, 'M', '1953-03-03', 2000, 2);
+insert into restauracja..personel values (11, 'Piotr',      'Cybulski',   3, 'M', '1974-12-06', 1500, 2);
+insert into restauracja..personel values (12, 'Paweł',      'Nowak',      4, 'M', '1962-02-02', 1200, 2);
+insert into restauracja..personel values (13, 'Paweł',      'Kowalski',   4, 'M', '1969-05-05', 1000, 2);
+insert into restauracja..personel values (14, 'Monika',     'Munk',       1, 'K', '1977-07-26', 2200, 3);
+insert into restauracja..personel values (15, 'Jan',        'Wiśniewski', 2, 'M', '1945-10-01', 2200, 3);
+insert into restauracja..personel values (16, 'Julia',      'Lisicka',    3, 'K', '1965-07-13', 1700, 3);
+insert into restauracja..personel values (17, 'Małgorzata', 'Plichta',    3, 'K', '1971-10-03', 1800, 2);
+insert into restauracja..personel values (18, 'Michał',     'Brzęczyk',   4, 'M', '1959-03-15', 1300, 3);
+insert into restauracja..personel values (19, 'Fabian',     'Małysz',     4, 'M', '1990-02-25', 1200, 3);
+insert into restauracja..personel values (20, 'Franciszek', 'Kimono',     1, 'M', '1946-06-08', 3000, 4);
+insert into restauracja..personel values (21, 'Hubert',     'Pinus',      2, 'M', '1997-09-11', 2600, 4);
+insert into restauracja..personel values (22, 'Maja',       'Głód',       3, 'K', '1990-02-25', 2400, 4);
+insert into restauracja..personel values (23, 'Michał',     'Szczot',     4, 'M', '1992-08-15', 1200, 4);
+insert into restauracja..personel values (24, 'Damian',     'Wróbel',     4, 'M', '1985-02-28', 1200, 4);
+insert into restauracja..personel values (25, 'Mirosław',   'Schab',      1, 'M', '1950-08-18', 3000, 5);
+insert into restauracja..personel values (26, 'Halina',     'Schab',      2, 'K', '1960-02-28', 2000, 5);
+insert into restauracja..personel values (27, 'Piotr',      'Schab',      3, 'M', '1985-04-16', 1000, 5);
+insert into restauracja..personel values (28, 'Mariola',    'Schab',      4, 'K', '1990-05-21', 1000, 5);
 --select * from restauracja.dbo.personel;
 go
 

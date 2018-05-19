@@ -30,7 +30,7 @@ insert into restauracja..personel values ( 5, 'Krzysztof',  'Frankowski', 3, 'M'
 insert into restauracja..personel values ( 6, 'Małgorzata', 'Kowalska',   4, 'K', '1972-03-15', 1300, 1);
 insert into restauracja..personel values ( 7, 'Anna',       'Biały',      4, 'K', '1960-11-10', 1200, 1);
 insert into restauracja..personel values ( 8, 'Katarzyna',  'Michalska',  4, 'K', '1960-11-17', 1500, 1);
-insert into restauracja..personel values ( 9, 'Dawid',      'Piotrowski', 1, 'M', '1975-03-22', 2000, 2);
+insert into restauracja..personel values ( 9, 'Filip',      'Piotrowski', 1, 'M', '1975-03-22', 2000, 2);
 insert into restauracja..personel values (10, 'Karol',      'Mucha',      2, 'M', '1953-03-03', 2000, 2);
 insert into restauracja..personel values (11, 'Piotr',      'Cybulski',   3, 'M', '1974-12-06', 1500, 2);
 insert into restauracja..personel values (12, 'Paweł',      'Nowak',      4, 'M', '1962-02-02', 1200, 2);

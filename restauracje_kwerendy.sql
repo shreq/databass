@@ -67,30 +67,57 @@ from restauracja..restauracje as r, restauracja..menu as m, restauracja..menudan
 	 restauracja..personel as p, restauracja..stanowiska as st
 where r.restauracjaID = m.restauracjaID AND m.menuID = md.menuID AND md.danieID = d.danieID AND
 	  d.danieID = ds.danieID AND ds.skladnikID = s.skladnikID AND r.restauracjaID = p.restauracjaID AND st.stanowiskoID = p.stanowiskoID AND
-	  (s.nazwa LIKE '%bul%' OR s.nazwa LIKE '_e%')
-	  AND
+	  (s.nazwa LIKE '%bul%' OR s.nazwa LIKE '_e%') AND
 	  st.nazwa LIKE 'szef kuchni'
 go
 
 -- 8 ++
--- aktualny wiek pracownikow
+-- wyswietlenie aktualnego wieku pracownikow
 select p.imie, p.nazwisko, FLOOR(DATEDIFF(day, p.dataUr, GETDATE()) / 365.242199) as [wiek] from restauracja..personel as p
 order by p.restauracjaID asc, wiek desc
+go
 
--- 9 --
+-- 9 ++
+-- wyswietlenie pracownikow urodzonych w piatek
+select * from restauracja..personel as p
+where DATENAME(dw, p.dataUr) = 'friday'
+go
+
+-- 10 ++
+-- wyswietlenie liczby dan ktore mozna kupic w restauracjach w danym miescie
+select r.miasto, count(*) as [ile dan] from restauracja..restauracje as r, restauracja..menu as m, restauracja..menudania as md
+where r.restauracjaID = m.restauracjaID AND m.menuID = md.menuID
+group by r.miasto
+go
+
+-- 11 ++
+-- wyswietlenie ilu pracownikow zarabia wiecej niz najmniej zarabiajacy kierownik
+select * from restauracja..personel as p, restauracja..stanowiska as s
+where p.pensja > (select MIN(xp.pensja) from restauracja..personel as xp, restauracja..stanowiska as xs
+				  where xs.stanowiskoID = xp.stanowiskoID AND xs.nazwa = 'kierownik') AND
+	  s.nazwa != 'kierownik' AND s.stanowiskoID = p.stanowiskoID
+go
+
+
+
+
+
+
+
+
+
+
+-- X --
 -- ile trzeba sprzedac dan o sredniej cenie, aby dana restauracja zarobila na pensje zalogi
 select p.restauracjaID, SUM(pensja) as [pensje]
 from restauracja..personel as p
 group by p.restauracjaID
-
 
 -- coooo
 select SUM(pensja) as [pensje], ROUND(AVG(d.cena), 2) as [srednia cena z menu]
 from restauracja..dania as d, restauracja..menudania as md, restauracja..menu as m, restauracja..restauracje as r, restauracja..personel as p
 where d.danieID = md.danieID AND md.menuID = m.menuID AND m.restauracjaID = r.restauracjaID AND r.restauracjaID = p.restauracjaID
 group by r.restauracjaID, p.restauracjaID
-
-
 
 
 

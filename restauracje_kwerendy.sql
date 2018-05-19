@@ -29,14 +29,14 @@ go
 
 -- 3 ++
 -- wyswietlenie sredniej pensji dla restauracji w danym miescie
-select r.miasto, ROUND(AVG(p.pensja), 2) from restauracja..personel as p, restauracja..restauracje as r
+select r.miasto, ROUND(AVG(p.pensja), 2) as [srednia w miescie] from restauracja..personel as p, restauracja..restauracje as r
 where p.restauracjaID = r.restauracjaID
 group by r.miasto
 go
 
 -- 4 ++
 -- wyswietlenie sredniej pensji dla obu plci
-select p.plec, ROUND(AVG(p.pensja), 2) from restauracja..personel as p
+select p.plec, ROUND(AVG(p.pensja), 2) as [srednia dla plci] from restauracja..personel as p
 group by p.plec
 go
 
@@ -98,9 +98,17 @@ where p.pensja > (select MIN(xp.pensja) from restauracja..personel as xp, restau
 	  s.nazwa != 'kierownik' AND s.stanowiskoID = p.stanowiskoID
 go
 
+-- 12 ++
+-- wyswietlenie ile zarobil dany pracownik od momentu zatrudnienia (zakladamy ze pensja sie nie zmieniala)
+select r.nazwa, p.imie+' '+p.nazwisko as [imie nazwisko], DATEDIFF(year, p.dataZatr, GETDATE()) as [lat pracy], DATEDIFF(month, p.dataZatr, GETDATE())*p.pensja as [zarobil od zatrudnienia]
+from restauracja..personel as p, restauracja..restauracje as r
+where p.restauracjaID = r.restauracjaID
+order by [zarobil od zatrudnienia] desc
 
-
-
+-- 13 ++
+-- wyswietlenie w jakim wieku zatrudnil sie dany pracownik
+select p.imie, p.nazwisko, FLOOR(DATEDIFF(day, p.dataUr, p.dataZatr)/365.242199) as [wiek przy zatrudnieniu]
+from restauracja..personel as p
 
 
 

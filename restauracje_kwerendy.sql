@@ -29,14 +29,14 @@ go
 
 -- 3 ++
 -- wyswietlenie sredniej pensji dla restauracji w danym miescie
-select r.miasto, ROUND(AVG(p.pensja), 2) from restauracja..personel as p, restauracja..restauracje as r
+select r.miasto, ROUND(AVG(p.pensja), 2) as [srednia w miescie] from restauracja..personel as p, restauracja..restauracje as r
 where p.restauracjaID = r.restauracjaID
 group by r.miasto
 go
 
 -- 4 ++
 -- wyswietlenie sredniej pensji dla obu plci
-select p.plec, ROUND(AVG(p.pensja), 2) from restauracja..personel as p
+select p.plec, ROUND(AVG(p.pensja), 2) as [srednia dla plci] from restauracja..personel as p
 group by p.plec
 go
 

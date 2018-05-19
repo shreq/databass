@@ -33,6 +33,7 @@ create table personel
 	stanowiskoID int not null,
 	plec char(1) not null constraint czytelnicy_plec_CH check(plec='K' or plec='M'),
 	dataUr smalldatetime not null,
+	dataZatr smalldatetime not null,
 	pensja money not null,
 	restauracjaID int not null,
 	constraint FKPersonelRestauracja foreign key (restauracjaID) references restauracje (restauracjaID),

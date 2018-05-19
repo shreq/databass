@@ -28,7 +28,7 @@ create table personel (
 	imie varchar(25) not null,
 	nazwisko varchar(25) not null,
 	stanowiskoID int not null,
-	plec char(1) not null constraint czytelnicy_plec_CH check(plec='K' or plec='M'),
+	plec char(1) not null constraint personel_plec_CH check(plec='K' or plec='M'),
 	dataUr smalldatetime not null,
 	pensja money not null,
 	restauracjaID int not null,
@@ -72,3 +72,4 @@ create table daniaskladniki (
 	constraint FKDaniaSkladniki2 foreign key (skladnikID) references skladniki (skladnikID)
 );
 go
+

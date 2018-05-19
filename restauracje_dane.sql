@@ -31,5 +31,37 @@ insert into restauracja.dbo.personel values (14,'Monika','Munk',1,'K','1977-7-26
 insert into restauracja.dbo.personel values (15,'Jan','Wiœniewski',2,'M','1945-10-1',3000,3);
 insert into restauracja.dbo.personel values (16,'Julia','Lisicka',3,'K','1965-7-13',900,3);
 insert into restauracja.dbo.personel values (17,'Micha³','Brzêczyk',4,'M','1959-3-15',1000,3);
-select * from restauracja.dbo.restauracje;
+select * from restauracja.dbo.personel;
+go
+
+insert into restauracja.dbo.menu values (1, 1)
+insert into restauracja.dbo.menu values (2, 2)
+insert into restauracja.dbo.menu values (3, 3)
+go
+
+-- dania g³ówne
+insert into restauracja.dbo.dania values (1, 'Spaghetti', 20)
+insert into restauracja.dbo.dania values (2, 'Carbonara', 18)
+insert into restauracja.dbo.dania values (3, 'Sznycel po wiedeñsku', 29)
+insert into restauracja.dbo.dania values (4, 'Gulasz wieprzowy', 30)
+insert into restauracja.dbo.dania values (5, 'Polêdwiczki po tajsku', 35)
+insert into restauracja.dbo.dania values (6, 'Pieczony ³osoœ', 40)
+-- sa³atki
+insert into restauracja.dbo.dania values (11, 'Sa³atka z grillowanym kurczakiem', 19)
+insert into restauracja.dbo.dania values (12, 'Sa³atka z marynowanym ³ososiem', 25)
+insert into restauracja.dbo.dania values (13, 'Sa³atka z polêdwiczk¹ wieprzow¹', 23)
+-- zupy
+insert into restauracja.dbo.dania values (21, 'Rosó³', 11)
+insert into restauracja.dbo.dania values (22, '¯urek', 12)
+insert into restauracja.dbo.dania values (23, 'Gulaszowa', 14)
+insert into restauracja.dbo.dania values (24, 'Barszcz bia³y', 11)
+-- napoje
+insert into restauracja.dbo.dania values (31, 'Herbata', 5)
+insert into restauracja.dbo.dania values (32, 'Kawa czarna', 6)
+insert into restauracja.dbo.dania values (33, 'Sok', 5)
+insert into restauracja.dbo.dania values (34, 'Wino', 10)
+insert into restauracja.dbo.dania values (35, 'Piwo', 9)
+insert into restauracja.dbo.dania values (36, 'Cappuccino', 7)
+insert into restauracja.dbo.dania values (37, 'Woda mineralna', 4)
+select * from restauracja.dbo.dania
 go

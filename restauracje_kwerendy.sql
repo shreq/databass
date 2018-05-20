@@ -111,24 +111,38 @@ select p.imie, p.nazwisko, FLOOR(DATEDIFF(day, p.dataUr, p.dataZatr)/365.242199)
 from restauracja..personel as p
 
 
+-- 14 ++
+-- wyswietla, jakich dan i restauracji dotyczy dany rekord w tabeli 'menudania'
+select md.menudaniaID, d.nazwa as [Nazwa dania], r.nazwa as [Nazwa restauracji]
+from restauracja..menudania as md, restauracja..dania as d, restauracja..restauracje as r, restauracja..menu as m
+where md.menuID = m.menuID and m.restauracjaID = r.restauracjaID and md.danieID = d.danieID
 
-
-
-
--- X --
+-- 15 ++
 -- ile trzeba sprzedac dan o sredniej cenie, aby dana restauracja zarobila na pensje zalogi
-select p.restauracjaID, SUM(pensja) as [pensje]
-from restauracja..personel as p
-group by p.restauracjaID
+select r.restauracjaID, SUM(p.pensja) as [pensje],
+	(select ROUND(AVG(d.cena), 2)
+	from restauracja..dania as d, restauracja..menudania as md, restauracja..menu as m
+	where d.danieID = md.danieID AND md.menuID = m.menuID AND m.restauracjaID = r.restauracjaID) as [srednia cena z menu],
+	(select cast(SUM(p.pensja)/AVG(d.cena) as int)
+	from restauracja..dania as d, restauracja..menudania as md, restauracja..menu as m
+	where d.danieID = md.danieID AND md.menuID = m.menuID AND m.restauracjaID = r.restauracjaID) as [Ilosc dan]
+from restauracja..restauracje as r, restauracja..personel as p
+where r.restauracjaID = p.restauracjaID
+group by r.restauracjaID
 
--- coooo
-select SUM(pensja) as [pensje], ROUND(AVG(d.cena), 2) as [srednia cena z menu]
-from restauracja..dania as d, restauracja..menudania as md, restauracja..menu as m, restauracja..restauracje as r, restauracja..personel as p
-where d.danieID = md.danieID AND md.menuID = m.menuID AND m.restauracjaID = r.restauracjaID AND r.restauracjaID = p.restauracjaID
-group by r.restauracjaID, p.restauracjaID
+-- 16 ++
+-- ile kosztowalo kazde zamowienie
+select z.zamowienieID, sum(d.cena)
+from restauracja..zamowienia as z, restauracja..zamowienieDania as zd, restauracja..menudania as md, restauracja..dania as d,
+	 restauracja..menu as m, restauracja..restauracje as r
+where z.zamowienieID = zd.zamowienieID and zd.menudaniaID = md.menudaniaID and md.danieID = d.danieID and md.menuID = m.menuID
+	and m.restauracjaID = r.restauracjaID
+group by z.zamowienieID
 
-
-
-
-
-
+-- 17 ++
+-- co zawieralo kazde zamowienie
+select z.zamowienieID, d.nazwa, d.cena
+from restauracja..zamowienia as z, restauracja..zamowienieDania as zd, restauracja..menudania as md, restauracja..dania as d,
+	 restauracja..menu as m, restauracja..restauracje as r
+where z.zamowienieID = zd.zamowienieID and zd.menudaniaID = md.menudaniaID and md.danieID = d.danieID and md.menuID = m.menuID
+	and m.restauracjaID = r.restauracjaID

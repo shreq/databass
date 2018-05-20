@@ -66,10 +66,11 @@ go
 
 create table menudania
 (
+	menudaniaID int not null primary key,
 	menuID int not null,
 	danieID int not null,
-	constraint FKMenuDania2 foreign key (menuID) references menu (menuID),
-	constraint FKMenuDania3 foreign key (danieID) references dania (danieID)
+	constraint FKMenuDania1 foreign key (menuID) references menu (menuID),
+	constraint FKMenuDania2 foreign key (danieID) references dania (danieID)
 );
 go
 
@@ -82,3 +83,20 @@ create table daniaskladniki
 );
 go
 
+create table zamowienia
+(
+	zamowienieID int not null primary key,
+	kelnerID int not null,
+	dataZamowienia smalldatetime not null,
+	constraint FKKelner foreign key (kelnerID) references personel (personelID)
+);
+go
+
+create table zamowienieDania
+(
+	zamowienieID int not null,
+	menudaniaID int not null,
+	constraint FKMenuDania foreign key (menudaniaID) references menudania (menudaniaID),
+	constraint FKZamowienia foreign key (zamowienieID) references zamowienia (zamowienieID),
+);
+go

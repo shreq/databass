@@ -102,53 +102,53 @@ insert into restauracja..dania values (28, 'schabowy',   8);
 go
 
 -- MenuDania, wiąże dane Danie z danym Menu
--- menuID, danieID
-insert into restauracja..menudania values (1,  1);
-insert into restauracja..menudania values (1,  2);
-insert into restauracja..menudania values (1,  3);
-insert into restauracja..menudania values (1,  5);
-insert into restauracja..menudania values (1,  6);
-insert into restauracja..menudania values (1,  7);
-insert into restauracja..menudania values (1,  8);
-insert into restauracja..menudania values (1,  9);
-insert into restauracja..menudania values (1, 10);
-insert into restauracja..menudania values (1, 11);
-insert into restauracja..menudania values (1, 12);
-insert into restauracja..menudania values (1, 27);
-insert into restauracja..menudania values (2,  1);
-insert into restauracja..menudania values (2,  2);
-insert into restauracja..menudania values (2,  3);
-insert into restauracja..menudania values (2, 13);
-insert into restauracja..menudania values (2, 14);
-insert into restauracja..menudania values (2, 15);
-insert into restauracja..menudania values (2, 16);
-insert into restauracja..menudania values (2, 17);
-insert into restauracja..menudania values (3,  1);
-insert into restauracja..menudania values (3,  2);
-insert into restauracja..menudania values (3,  3);
-insert into restauracja..menudania values (3,  5);
-insert into restauracja..menudania values (3,  6);
-insert into restauracja..menudania values (3, 15);
-insert into restauracja..menudania values (3, 17);
-insert into restauracja..menudania values (3, 18);
-insert into restauracja..menudania values (4,  4);
-insert into restauracja..menudania values (4, 22);
-insert into restauracja..menudania values (4, 23);
-insert into restauracja..menudania values (4, 24);
-insert into restauracja..menudania values (5,  1);
-insert into restauracja..menudania values (5,  5);
-insert into restauracja..menudania values (5, 13);
-insert into restauracja..menudania values (5, 15);
-insert into restauracja..menudania values (5, 20);
-insert into restauracja..menudania values (5, 25);
-insert into restauracja..menudania values (5, 26);
-insert into restauracja..menudania values (5, 27);
-insert into restauracja..menudania values (5, 28);
-insert into restauracja..menudania values (6,  1);
-insert into restauracja..menudania values (6, 14);
-insert into restauracja..menudania values (6, 19);
-insert into restauracja..menudania values (6, 20);
-insert into restauracja..menudania values (6, 21);
+-- menudaniaID, menuID, danieID
+insert into restauracja..menudania values (1, 1,  1);
+insert into restauracja..menudania values (2, 1,  2);
+insert into restauracja..menudania values (3, 1,  3);
+insert into restauracja..menudania values (4, 1,  5);
+insert into restauracja..menudania values (5, 1,  6);
+insert into restauracja..menudania values (6, 1,  7);
+insert into restauracja..menudania values (7, 1,  8);
+insert into restauracja..menudania values (8, 1,  9);
+insert into restauracja..menudania values (9, 1, 10);
+insert into restauracja..menudania values (10, 1, 11);
+insert into restauracja..menudania values (11, 1, 12);
+insert into restauracja..menudania values (12, 1, 27);
+insert into restauracja..menudania values (13, 2,  1);
+insert into restauracja..menudania values (14, 2,  2);
+insert into restauracja..menudania values (15, 2,  3);
+insert into restauracja..menudania values (16, 2, 13);
+insert into restauracja..menudania values (17, 2, 14);
+insert into restauracja..menudania values (18, 2, 15);
+insert into restauracja..menudania values (19, 2, 16);
+insert into restauracja..menudania values (20, 2, 17);
+insert into restauracja..menudania values (21, 3,  1);
+insert into restauracja..menudania values (22, 3,  2);
+insert into restauracja..menudania values (23, 3,  3);
+insert into restauracja..menudania values (24, 3,  5);
+insert into restauracja..menudania values (25, 3,  6);
+insert into restauracja..menudania values (26, 3, 15);
+insert into restauracja..menudania values (27, 3, 17);
+insert into restauracja..menudania values (28, 3, 18);
+insert into restauracja..menudania values (29, 4,  4);
+insert into restauracja..menudania values (30, 4, 22);
+insert into restauracja..menudania values (31, 4, 23);
+insert into restauracja..menudania values (32, 4, 24);
+insert into restauracja..menudania values (33, 5,  1);
+insert into restauracja..menudania values (34, 5,  5);
+insert into restauracja..menudania values (35, 5, 13);
+insert into restauracja..menudania values (36, 5, 15);
+insert into restauracja..menudania values (37, 5, 20);
+insert into restauracja..menudania values (38, 5, 25);
+insert into restauracja..menudania values (39, 5, 26);
+insert into restauracja..menudania values (40, 5, 27);
+insert into restauracja..menudania values (41, 5, 28);
+insert into restauracja..menudania values (42, 6,  1);
+insert into restauracja..menudania values (43, 6, 14);
+insert into restauracja..menudania values (44, 6, 19);
+insert into restauracja..menudania values (45, 6, 20);
+insert into restauracja..menudania values (46, 6, 21);
 --select * from restauracja..menudania
 go
 
@@ -236,3 +236,41 @@ insert into restauracja..daniaskladniki values (27,  1);
 insert into restauracja..daniaskladniki values (27,  4);
 insert into restauracja..daniaskladniki values (28,  5);
 --select * from restauracja..daniaskladniki
+go
+
+-- Zamowienia, kazde zamowienie ma przypisanego jednego kelnera
+-- zamowienieID, kelnerID, dataZamowienia
+insert into restauracja..zamowienia values (1, 6, '2018-05-09');
+insert into restauracja..zamowienia values (2, 7, '2018-05-09');
+insert into restauracja..zamowienia values (3, 7, '2018-05-11');
+insert into restauracja..zamowienia values (4, 8, '2018-05-13');
+insert into restauracja..zamowienia values (5, 12, '2018-05-13');
+insert into restauracja..zamowienia values (6, 13, '2018-05-13');
+insert into restauracja..zamowienia values (7, 18, '2018-05-13');
+insert into restauracja..zamowienia values (8, 19, '2018-05-14');
+insert into restauracja..zamowienia values (9, 23, '2018-05-14');
+insert into restauracja..zamowienia values (10, 24, '2018-05-15');
+insert into restauracja..zamowienia values (11, 28, '2018-05-15');
+insert into restauracja..zamowienia values (12, 28, '2018-05-15');
+--select * from restauracja..zamowienia
+go
+
+-- ZamowienieDania, powiazanie zamowienia i dania z konkretnego menu, ktore z kolei wskazuje na restauracje
+-- zamowienieID, menudaniaID
+insert into restauracja..zamowienieDania values (1, 1);
+insert into restauracja..zamowienieDania values (1, 4);
+insert into restauracja..zamowienieDania values (1, 8);
+insert into restauracja..zamowienieDania values (1, 13);
+
+insert into restauracja..zamowienieDania values (5, 14);
+insert into restauracja..zamowienieDania values (5, 16);
+insert into restauracja..zamowienieDania values (5, 20);
+
+insert into restauracja..zamowienieDania values (7, 21);
+insert into restauracja..zamowienieDania values (7, 28);
+
+insert into restauracja..zamowienieDania values (9, 29);
+insert into restauracja..zamowienieDania values (9, 32);
+
+insert into restauracja..zamowienieDania values (11, 33);
+insert into restauracja..zamowienieDania values (11, 41);

@@ -12,7 +12,8 @@ create table restauracje
 	nazwa varchar(30) not null,
 	ulica varchar(50) not null,
 	miasto varchar(30) not null,
-	kod varchar(6) not null
+	kod varchar(6) not null,
+	maxCena money not null
 );
 go
 
@@ -28,6 +29,7 @@ go
 create table personel
 (
 	personelID int not null primary key,
+	kierownikID int constraint SKKierownik references personel (personelID),
 	imie varchar(30) not null,
 	nazwisko varchar(30) not null,
 	stanowiskoID int not null,
@@ -36,8 +38,25 @@ create table personel
 	dataZatr smalldatetime not null,
 	pensja money not null,
 	restauracjaID int not null,
+	dataZwolnienia smalldatetime,
 	constraint FKPersonelRestauracja foreign key (restauracjaID) references restauracje (restauracjaID),
 	constraint FKPersonelStanowisko foreign key (stanowiskoID) references stanowiska (stanowiskoID)
+);
+go
+
+create table personel_archiw
+(
+	personelID int,
+	kierownikID int,
+	imie varchar(30),
+	nazwisko varchar(30),
+	stanowiskoID int,
+	plec char(1),
+	dataUr smalldatetime,
+	dataZatr smalldatetime,
+	pensja money,
+	restauracjaID int,
+	dataZwolnienia smalldatetime
 );
 go
 

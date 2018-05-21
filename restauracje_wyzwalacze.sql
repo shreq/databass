@@ -41,7 +41,7 @@ as
 		select r.maxCena
 		from inserted as i, restauracja..menu as m, restauracja..restauracje as r
 		where i.menuID = m.menuID and m.restauracjaID = r.restauracjaID)
-	
+
 	if ( @cenaDania < @maxCena )
 	begin
 		insert into restauracja..menudania select * from inserted
@@ -77,7 +77,7 @@ after update
 as
 	declare @placa_max money = (select placa_max from inserted)
 	declare @placa_min money = (select placa_min from inserted)
-	
+
 	declare kursor cursor for (select personelID from restauracja..personel where stanowiskoID = (select stanowiskoID from inserted))
 	open kursor
 	declare @x int
@@ -119,3 +119,6 @@ go
 select p.personelID, p.imie, p.nazwisko, p.pensja, s.nazwa
 from restauracja..personel as p, restauracja..stanowiska as s
 where p.stanowiskoID = s.stanowiskoID and (s.nazwa = 'kelner' or s.nazwa = 'szef kuchni')
+
+use master
+go
